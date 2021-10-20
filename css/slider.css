@@ -1,0 +1,85 @@
+.slider {
+    border: 0px solid  black;
+    margin: 10px;
+    padding: 0px;
+    width: 254px;
+    z-index: 1;
+}
+
+.slider-track {
+    border: 0px solid  red;
+    overflow: hidden;
+    padding: 4px 0;
+    margin: 0;
+    position: relative;
+    top: -4px;
+    left: -3px;
+    height: 3px;
+    width: 238px;
+    z-index: 3;
+}
+
+.slider-wrapper-track {
+    border: 0px solid  orange;
+    margin: 0;
+    padding: 0;
+    height: 3px;
+    width: 232px;
+    border-style: solid;
+    border-width: 8px 11px 10px 11px;
+    border-image: url('../images/form/track.png') 8 11 10;
+    z-index: 2;
+}
+
+.slider-thumb {
+    width: 9px;
+    height: 8px;
+    background: url('../images/form/thumb.png');
+    position: relative;
+    left: 229px;
+    top: -2px;
+    cursor: pointer;
+}
+
+.slider-thumb-left-area {
+    margin: 0;
+    padding: 0;
+    height: 3px;
+    width: 300px;
+    background: url('../images/form/thumb-left-area.png') repeat-x;
+    position: absolute;
+    left: -295px;
+    top: 2px;
+    z-index: -1;
+}
+
+.slider-thumb-right-area {
+    border: 0px solid red;
+    margin: 0;
+    padding: 0;
+    height: 3px;
+    width: 300px;
+    background: url('../images/form/thumb-right-area.png') repeat-x;
+    position: absolute;
+    right: -295px;
+    top: 2px;
+    z-index: -1;
+}
+
+.slider-labels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 10px;
+}
+
+.slider-labels div {
+    font-size: 10px;
+    font-family: "Verdana";
+    color: rgb(103, 103, 103);
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}

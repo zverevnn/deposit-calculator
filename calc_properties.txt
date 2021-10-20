@@ -1,0 +1,9 @@
+depositDateMin = 01.01.2010
+depositDateMax = 31.12.9999
+depositAmountMin = 1000
+depositAmountMax = 3000000
+depositAmountAddMin = 1000
+depositAmountAddMax = 3000000
+depositPeriodYearsMin = 1
+depositPeriodYearsMax = 5
+percent = 0.1

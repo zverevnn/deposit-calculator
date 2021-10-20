@@ -1,0 +1,29 @@
+html, body {
+	height: 100%;
+}
+
+div {
+	height: 100%;
+	margin: 0 auto;
+	padding: 0;
+	border: 1px solid red;
+	display: flex;
+	flex-direction: row;
+	width: 1000px;
+	box-sizing: border-box;
+	justify-content: space-between;
+}
+
+#header {
+	margin-top: 10px;
+	height: 100px;
+}
+
+.content {
+	margin-top: 10px;
+}
+
+#footer {
+	margin-top: 50px;
+	height: 100px;
+}
