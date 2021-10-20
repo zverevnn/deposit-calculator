@@ -1,3 +1,5 @@
+// элемент формы - слайдер/ползунок
+
 class Slider {
     constructor({elementsId, input, min, max, sliderValue, methods}) {
 

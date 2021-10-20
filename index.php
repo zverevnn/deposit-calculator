@@ -174,6 +174,11 @@
                         </div>
 
                         <div class="calculator-grid-row">
+
+                            <!-- 
+                                в ТЗ не было такой опции, но я решил её добавить, т.к. в "эталоне" https://fincult.info/calc/deposit/
+                                эта функция есть и здесь она тоже не будет лишней, для большей функиональности калькулятора
+                             -->
                             <div>Начисление процентов с учетом капитализации</div>
                             <div>
                                 <input type="radio" id="capitalization-false" name="capitalization" value="0" checked>
@@ -216,8 +221,6 @@
 
     </div>
 
-
-    
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="js/formComponents.js"></script>

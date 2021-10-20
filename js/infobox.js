@@ -66,9 +66,14 @@ class Infobox {
         this.percentSum = +this.tableRows.reduce((prev, item) => item[Object.keys(item)[1]] + prev, 0);
         //this.percentSum = +this.tableRows.reduce((prev, item) => item[Object.keys(item)[1]].toFixed(2) + prev, 0);
 
+        // последняя сумма остатка по вкладу
+        let lastDepositAmount = this.tableRows[this.tableRows.length - 1];
+        lastDepositAmount = lastDepositAmount[Object.keys(lastDepositAmount)[2]];
+
         // итоговая сумма вклада
         // расчитывается по формуле: сумма процентов + сумма вклада
-        this.finalDepositAmount = this.percentSum + this.depositAmount;
+        this.finalDepositAmount = this.percentSum;
+        this.finalDepositAmount += (isDepositAdd) ? lastDepositAmount : this.depositAmount;
 
         // эффективная ставка
         // если проценты начисляются с учетом капитализации, 
@@ -82,8 +87,7 @@ class Infobox {
         // итоговая сумма к выплате рассчитывается по формуле: сумма процентов + сумма вклада
         // берется сумма вклада   
         if (this.isDepositAdd) {
-            let lastItemArray = this.tableRows[this.tableRows.length - 1];
-            this.payoutAmount = lastItemArray[Object.keys(lastItemArray)[2]];
+            this.payoutAmount = lastDepositAmount;
         } else {
             this.payoutAmount = (capitalization) ? this.finalDepositAmount : this.depositAmount;
         }
