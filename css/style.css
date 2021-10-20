@@ -1,0 +1,300 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+* {
+    vertical-align: baseline;
+    font-weight: inherit;
+    font-family: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    border: 0 none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+}
+
+
+@font-face {
+	font-family: 'EUR';
+	src: url("../fonts/EUR/EUR.eot");
+	src: local('☺'), url("../fonts/EUR/EUR.woff") format('woff'), url("../fonts/EUR/EUR.ttf") format('truetype'), url("../fonts/EUR/EUR.svg") format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+header {
+    width: 1024px;
+    height: 210px;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    
+}
+
+.link-logo {
+    display: block;
+    width: 230px;
+    height: 86px;
+    margin: 12px 0 0 0;
+    float: left;
+}
+
+.contacts {
+    font-size: 18px;
+    font-family: "EUR";
+    color: rgb(235, 80, 23);
+    line-height: 1.111;
+    text-align: left;
+    margin: 40px 35px 0 0;
+    width: 177px;
+    height: 36px;
+    float: right;
+}
+
+
+#header-menu {
+    margin: 118px auto 0 auto;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;   
+    border:1px solid #e0e0e0;
+    background-color: #231f20;
+    width: 1000px;
+}
+
+.menu li {
+    display: inline;
+}
+.menu {
+    
+}
+
+#header-menu a {
+    color: #fff;
+    font-size: 14px;
+    font-family: "Arial";
+    height: 47px;
+    line-height: 47px;
+    padding: 0 35px;
+    margin: 0 0 0 -5px;
+    text-decoration: none;
+    display: inline-block;
+    border-right: 1px solid #eb5017;
+}
+
+#header-menu :last-child a{
+    border-right: none;
+}
+
+#header-menu a:hover, .active {
+    background-color: #eb5017;
+}
+
+#footer-wrapper {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+footer {
+    margin: 0 auto;
+    left: center;
+    width: 1024px;
+    height: 59px;
+}
+
+#footer-menu {
+    margin: 0 auto;
+    padding: 0 0 0 60px;
+    list-style-type: none;
+    text-align: left;   
+    border:1px solid #e0e0e0;
+    background-color: #231f20;
+    width: 942px;
+    height: 59px;
+}
+
+#footer-menu a {
+    color: #fff;
+    font-size: 12px;
+    font-family: "Arial";
+    padding: 15px 0 1px 0;
+    margin: 0 12px 0 12px;
+    text-decoration: none;
+    border-bottom: 1px solid white;
+    display: inline-block;
+}
+
+
+.content {
+    border: 1px solid transparent;
+    width: 1024px;
+    margin: 0 auto;
+    min-height: 460px;
+}
+
+#calculator {
+  background-color: #dfdfdf;
+  margin: 0 0 0 30px;
+  width: 652px;
+  height: 378px;
+}
+
+
+#calculator table h3 {
+    font-size: 30px;
+    font-family: "Arial";
+    color: #eb5017;
+    padding: 19px 0 0 100px;
+    width: 173px;
+    height: 28px;
+}
+
+#calculator table {
+    border: 1px solid transparent;
+    //width: 652px;
+}
+
+#calculator table th {
+    height: 56px;
+}
+
+#calculator table tbody tr td {
+    vertical-align:middle;
+    height: 40px;
+}
+
+#calculator table tbody tr td:first-child {
+    width: 192px;
+    text-align: right;
+    font-size: 14px;
+    font-family: "Arial";
+    color: #000;
+    padding: 0 30px 0 0;
+}
+
+#calculator table tbody tr td:nth-child(2) {
+    width: 110px;
+    font-size: 14px;
+    font-family: "Arial";
+    color: #000;
+}
+
+#calculator table tbody tr td:nth-child(3) {
+    position: relative;
+    width: 210px;
+}
+
+#calculator input[type=text], select{
+    width: 88px;
+    height: 21px;
+    border: 1px solid #cfd1d2; 
+    background: linear-gradient(to top, #e3e3e3 1px, white 2px);
+}
+
+#calculator input[type=radio], label {
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+    cursor: pointer;
+}
+
+
+
+#calculator input[type=submit] {
+    background: url(../images/form/submit.png) no-repeat;
+    width: 100px;
+    height: 33px;
+    margin: 20px 0 0 22px;
+    border-radius: 7px;
+    float: left;
+}
+
+
+
+#result {
+    display: block;
+    margin: 24px 0 0 10px;
+    border: 1px solid transparent;
+    width: 200px;
+    float: left;
+}
+
+.result {
+    font-size: 12px;
+    font-family: "Arial";
+    color: #395306;
+    font-weight: bold;
+} 
+
+#result-value {
+    font-size: 14px;
+    font-family: "Arial"
+    color: #000;
+}
+
+
+/*
+input[type=range]  {
+    width: 200px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 240px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    border-radius: 10px/100%;
+    height: 7px;
+    border: 1px solid #fff;
+    background-color: #1e1f22;
+}
+input[type=range]::-webkit-slider-thumb {
+    background: url(../images/form/slider-thumb.png) no-repeat;
+    background-position-y: center;
+    cursor: pointer;
+    width:10px;
+    height: 20px;
+    -webkit-appearance: none;
+    margin-top: -8px;
+}
+
+
+table td {
+    border: 0px solid red;
+}
+
+.range-thumb-label {
+    font-size: 10px;
+    font-family: "Verdana";
+    color: rgb(103, 103, 103);
+    font-style: italic;
+    line-height: 2.083;
+}
+
+.range-thumb-min {
+    position: absolute;
+    left: 0px;
+    bottom: -2px;
+}
+
+.range-thumb-max {
+    position: absolute;
+    right: 0px;
+    bottom: -2px;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
