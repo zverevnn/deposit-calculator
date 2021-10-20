@@ -189,7 +189,7 @@
                     <div id="calculator-result">
                         <div>
                             <input type="submit" id="btn-calculate" value="">
-                            <span id="calculation-details-button" title="показать график начислений" hidden>График начислений</span>
+                            <span id="calculation-details-button" title="показать/скрыть график начислений" hidden>График начислений</span>
                         </div>
                         <div id="result-value">
                             <span class="result-label">Результат: </span>

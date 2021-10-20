@@ -1,4 +1,3 @@
-
 hr {
 	
 	//-moz-box-sizing: border-box; /* Для Firefox */
@@ -20,36 +19,28 @@ html, body {
 	font-size: 14px;
     font-family: "Arial";
     color: #000;
-
 }
-
-html {
-	min-height: 500px;
-}
-
 
 html, body, div, header, section, footer, ul, li {
 	margin: 0;
 	padding: 0;
 }
 
-
 ul {
 	list-style: none;
 }
 
-
 .wrapper {
 	width: 1024px;
-	height: 100%;
 	margin: 0 auto;
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+  	flex-direction: column;
+  	height: 100%;
+
 }
 
 header {
-	min-height: 195px;
+	flex: 0 0 195px;
 }
 
 #header-section-1 {
@@ -114,13 +105,11 @@ header {
 	background: #eb5017;
 }
 
-
 #breadcrumb ul {
 	margin-top: 12px;
 	padding: 0;
 	list-style: none;
 	height: 18px;
-
 }
 
 #breadcrumb li {
@@ -135,7 +124,6 @@ header {
 	content: '';
 }
 
-
 #breadcrumb li a{
 	font-size: 12px;
 	color: rgb(35, 31, 32);
@@ -148,7 +136,6 @@ header {
 	padding: 0;
 }
 
-
 #breadcrumb ul {
 	margin-left: 30px;
 }
@@ -158,45 +145,9 @@ header {
 	color: rgb(35, 31, 32);
 }
 
-
-footer {
-	box-sizing: border-box;
-	background: #231f20;
-	min-height: 55px;
-	margin-top: 10px;
-	border: 1px solid #e0e0e0;
-	position: sticky;
-	bottom: 0;
-	position: fixed;
-	//transform: translateX(-50%);
-	left: 50%;
-	width: 1024px;
-}
-
-#nav-footer ul{
-	padding: 0;
-	margin: 12px 60px 0 60px;
-}
-
-#nav-footer li {
-	float: left;
-	margin:0 24px 0 0;
-	padding: 0 0 1px 0;
-	border-bottom: 1px solid #fff;
-
-}
-
-#nav-footer li a {
-	float: left;
-	font-size: 12px;
-  	color: #fff;
-  	text-decoration: none;
-}
-
-
 #content {
-	height: 100%;
 	margin: 20px 0 0 30px;
+	flex: 1 0 auto;
 }
 
 #calculator form {
@@ -251,8 +202,6 @@ footer {
 
 .calculator-grid-row > div:nth-child(2) {
 	padding-left: 30px;
-	//width: 132px;
-	//text-align: center;
 }
 
 
@@ -309,12 +258,6 @@ footer {
     cursor: pointer;
 }
 
-
-/* чтобы дизайн бегунка и календаря не конфликтовали между собой */
-#ui-datepicker-div  {
-	z-index: 999 !important;
-}
-
 #calculation-details-button {
 	font-size: 12px;
 	cursor: pointer;
@@ -328,3 +271,39 @@ footer {
 .form-data-error {
 	background: #ff9999;
 } 
+
+footer {
+	flex-shrink: 0;
+	box-sizing: border-box;
+	background: #231f20;
+	min-height: 55px;
+	margin-top: 10px;
+	margin: 10px auto 0 auto;
+	border: 1px solid #e0e0e0;
+	bottom: 0;
+	width: 1024px;
+}
+
+#nav-footer ul{
+	padding: 0;
+	margin: 12px 60px 0 60px;
+}
+
+#nav-footer li {
+	float: left;
+	margin:0 24px 0 0;
+	padding: 0 0 1px 0;
+	border-bottom: 1px solid #fff;
+
+}
+
+#nav-footer li a {
+	float: left;
+	font-size: 12px;
+  	color: #fff;
+  	text-decoration: none;
+}
+
+#ui-datepicker-div  {
+	z-index: 999 !important;
+}

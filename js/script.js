@@ -63,57 +63,72 @@ let infobox = new Infobox({
 });
 
 
+function getInputData() {
+    let result = {
+        depositDate: $('#datepicker').val(),
+        depositAmount: removeSpaces( $('#deposit-amount-input').val() ),
+        depositAmountAdd: removeSpaces( $('#deposit-amount-add-input').val() ),
+        depositPeriodYears: $('#deposit-period-years').val(),
+        isDepositAdd: $('input[name="is-deposit-add"]:checked').val(),
+        capitalization: $('input[name="capitalization"]:checked').val()
+    }
+
+    return result;
+}
+
 $(document).ready(function() {
-    $('#form-calculator').submit(function(event) {
+
+    processDataAjax(getInputData());
+
+    let formCalculator = $('#form-calculator');
+
+
+    formCalculator.submit(function(event) {
         event.preventDefault();
-        let calculatedData = {
-            depositDate: $('#datepicker').val(),
-            depositAmount: removeSpaces( $('#deposit-amount-input').val() ),
-            depositAmountAdd: removeSpaces( $('#deposit-amount-add-input').val() ),
-            depositPeriodYears: $('#deposit-period-years').val(),
-            isDepositAdd: $('input[name="is-deposit-add"]:checked').val(),
-            capitalization: $('input[name="capitalization"]:checked').val()
-        }
-
-        $.ajax({
-            method: 'POST',
-            url: '../calc.php',
-            data: calculatedData,
-        })
-        .done(function(answer){
-            //console.log(answer);
-            
-            let result = (answer) ?  JSON.parse(answer) : '';
-
-            calculationDetailsButton.hidden = result.error;
-            console.log(result);
-            infobox.calculate({
-                error : result.error,
-                tableRows : result.value.details,
-                depositAmount : calculatedData.depositAmount, 
-                percent : result.value.percent * 100,
-                isDepositAdd : result.value.isDepositAdd,
-                capitalization : result.value.capitalization
-            });
-
-            
-            if (result.error) {
-                $('#result-value').addClass("form-data-error");
-            } else {
-                $('#result-value').removeClass("form-data-error");
-            }
-            
-            let resultTitle = (result.error) ? 'Ошибка! ' : 'Результат: ';
-            let resultValue = (result.error) ? result.value[0] : infobox.finalDepositAmountFormatRub;
-
-            $('#result-value .result-label').text(resultTitle);
-            $('#result-value .result-value').text(resultValue);
-            
-        });
+        
+        processDataAjax(getInputData());
 
     })
 });
 
+
+function processDataAjax(inputData) {
+    $.ajax({
+        method: 'POST',
+        url: '../calc.php',
+        data: inputData,
+    })
+    .done(function(answer){
+        //console.log(answer);
+        
+        let result = (answer) ?  JSON.parse(answer) : '';
+
+        calculationDetailsButton.hidden = result.error;
+
+        infobox.calculate({
+            error : result.error,
+            tableRows : result.value.details,
+            depositAmount : inputData.depositAmount, 
+            percent : result.value.percent * 100,
+            isDepositAdd : result.value.isDepositAdd,
+            capitalization : result.value.capitalization
+        });
+
+        
+        if (result.error) {
+            $('#result-value').addClass("form-data-error");
+        } else {
+            $('#result-value').removeClass("form-data-error");
+        }
+        
+        let resultTitle = (result.error) ? 'Ошибка! ' : 'Результат: ';
+        let resultValue = (result.error) ? result.value[0] : infobox.finalDepositAmountFormatRub;
+
+        $('#result-value .result-label').text(resultTitle);
+        $('#result-value .result-value').text(resultValue);
+        
+    });
+}
 
 
 
