@@ -1,182 +1,182 @@
-.infobox{
-		position: absolute;
-		top: 100px;
-		left:25%;
-        background: #EBEBEB;
-        width: 600px;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        text-transform: uppercase;
-        font: 14px Arial;
-        color:#fff;
-        z-index: 999;
-    }
+﻿.infobox{
+    position: absolute;
+    top: 100px;
+    left:25%;
+    background: #EBEBEB;
+    width: 600px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font: 14px Arial;
+    color:#fff;
+    z-index: 999;
+}
     
-    .infobox-header {
-        background: #3A3A3A;
-        padding: 0;
-        margin: 0;
-        font-weight: bold;
-        text-align: center;
-    }
+.infobox-header {
+    background: #3A3A3A;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
 
-    .infobox-header > div {
-        display: flex;
-        justify-content: space-between;
-        align-content: stretch;
-    }
+.infobox-header > div {
+    display: flex;
+    justify-content: space-between;
+    align-content: stretch;
+}
 
-    .infobox-header-title {
-        padding: 5px 0 0 0;
-        margin: 0;
-        background: #3A3A3A;
-        font-weight: bold;
-        flex: 1;
-        cursor: all-scroll;
-        font-size: 16px;
+.infobox-header-title {
+    padding: 5px 0 0 0;
+    margin: 0;
+    background: #3A3A3A;
+    font-weight: bold;
+    flex: 1;
+    cursor: all-scroll;
+    font-size: 16px;
 
-        // запретить выделение
-        -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none;   /* Chrome/Safari/Opera */
-        -khtml-user-select: none;    /* Konqueror */
-        -moz-user-select: none;      /* Firefox */
-        -ms-user-select: none;       /* Internet Explorer/Edge */
-        user-select: none;           /* Non-prefixed version, currently */
-    }
+    // запретить выделение
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently */
+}
 
-    .infobox-header-close {
-        color: white;
-        cursor: pointer;
-        width: 30px;
-        text-align: center;
-        margin: 0px;
-        padding: 0px;
-        width: 30px;
-    }
+.infobox-header-close {
+    color: white;
+    cursor: pointer;
+    width: 30px;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    width: 30px;
+}
 
-    .infobox-header-close:hover {
-        color: #eb5017;
-    }
+.infobox-header-close:hover {
+    color: #eb5017;
+}
+
+.infobox-header-label {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+}
+
+.infobox-header-label ul{
+    margin: 4px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.infobox-header-label ul li:first-child {
+    background: #838383 ;
+    font-size: 10px;
+    flex: 1;
+    padding: 2px 0 0 0;
+}
+
+.infobox-header-label ul li:last-child {
+    background: #F6F6F6 ;
+    font-size: 14px;
+    color: #eb5017;
+}
     
-    .infobox-header-label {
-        display: flex;
-        flex-direction: row;
-        height: 40px;
-    }
-    
-    .infobox-header-label ul{
-        margin: 4px;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        border-radius: 3px;
-        overflow: hidden;
-    }
-    
-    .infobox-header-label ul li:first-child {
-        background: #838383 ;
-        font-size: 10px;
-        flex: 1;
-        padding: 2px 0 0 0;
-    }
-    
-    .infobox-header-label ul li:last-child {
-        background: #F6F6F6 ;
-        font-size: 14px;
-        color: #eb5017;
-    }
-        
-    .infobox-rows {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        background: #EBEBEB;
-        margin: 5px 0 0 0;
-        padding: 0px 0 0 0;
-        height: 100%;
-        overflow-y: auto;
-        max-height: 500px;
-        font-size: 12px;
-    }
+.infobox-rows {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background: #EBEBEB;
+    margin: 5px 0 0 0;
+    padding: 0px 0 0 0;
+    height: 100%;
+    overflow-y: auto;
+    max-height: 500px;
+    font-size: 12px;
+}
 
-    .infobox-rows ul {
-        margin: 0px;
-        padding: 1px 0;
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        color:#000;
-    }
+.infobox-rows ul {
+    margin: 0px;
+    padding: 1px 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    color:#000;
+}
 
-    /* выбираем ul кроме первого и двух предпоследних */
-    .infobox-rows 
-        ul:not(
-            .infobox-rows ul:nth-last-child(-n+2), 
-            .infobox-rows ul:first-child) {
+/* выбираем ul кроме первого и двух предпоследних */
+.infobox-rows 
+    ul:not(
+        .infobox-rows ul:nth-last-child(-n+2), 
+        .infobox-rows ul:first-child) {
 
-        border-bottom: 1px solid #A9A7A7;
-    }
+    border-bottom: 1px solid #A9A7A7;
+}
 
-    /* выбираем ul кроме первого и последнего */
-    .infobox-rows ul:not(
-        .infobox-rows ul:last-child, 
-        .infobox-rows ul:first-child):hover {
+/* выбираем ul кроме первого и последнего */
+.infobox-rows ul:not(
+    .infobox-rows ul:last-child, 
+    .infobox-rows ul:first-child):hover {
 
-        background: #C3C2C2;
-    }
+    background: #C3C2C2;
+}
 
-    /* выбираем крайние ul  */
-    .infobox-rows ul:first-child, 
-    .infobox-rows ul:last-child {
-        position: sticky;
-        background: #eb5017;
-        font-weight: bold;
-        text-align: left;
-        font-size: 12px;
-        border-radius: 5px;
-        color: white;
-        text-transform: uppercase;
-    }
+/* выбираем крайние ul  */
+.infobox-rows ul:first-child, 
+.infobox-rows ul:last-child {
+    position: sticky;
+    background: #eb5017;
+    font-weight: bold;
+    text-align: left;
+    font-size: 12px;
+    border-radius: 5px;
+    color: white;
+    text-transform: uppercase;
+}
 
-    /*
-    .infobox-rows ul:last-child li:not(.infobox-rows ul:last-child li:first-child) {
-        text-align: left;
-    }
-    */
+/*
+.infobox-rows ul:last-child li:not(.infobox-rows ul:last-child li:first-child) {
+    text-align: left;
+}
+*/
 
-    .infobox-rows ul:first-child {
-        top: 0;
-    }
+.infobox-rows ul:first-child {
+    top: 0;
+}
 
-    .infobox-rows ul:last-child {
-        bottom: 0;
-    }
+.infobox-rows ul:last-child {
+    bottom: 0;
+}
 
-    /* отбор всех li кроме последнего в первом и последнем ul  */
-    .infobox-rows ul:first-child li:not(
-        .infobox-rows ul:first-child li:last-child),
-    .infobox-rows ul:last-child li:not(
-        .infobox-rows ul:last-child li:last-child) {
+/* отбор всех li кроме последнего в первом и последнем ul  */
+.infobox-rows ul:first-child li:not(
+    .infobox-rows ul:first-child li:last-child),
+.infobox-rows ul:last-child li:not(
+    .infobox-rows ul:last-child li:last-child) {
 
-        border-right: 1px solid white;  
-    }
-    
-    .infobox-rows ul li {
-        margin: 0 2px;
-        flex: 1;
-        padding: 1px 0 1px 10px;
-    }
-    
-    .infobox-rows ul li:first-child {
-        text-align: center;
-    }
+    border-right: 1px solid white;  
+}
 
-    /* полоса прокрутки  */
-    .infobox-rows::-webkit-scrollbar { width: 3px; height: 3px; }
-    .infobox-rows::-webkit-scrollbar-button { background-color: transparent; height: 11px; }
-    .infobox-rows::-webkit-scrollbar-track { background-color: transparent; }
-    .infobox-rows::-webkit-scrollbar-track-piece { background-color: #EBEBEB; }
-    .infobox-rows::-webkit-scrollbar-thumb { height: 50px; background-color: #eb5017; border-radius: 3px; }
+.infobox-rows ul li {
+    margin: 0 2px;
+    flex: 1;
+    padding: 1px 0 1px 10px;
+}
+
+.infobox-rows ul li:first-child {
+    text-align: center;
+}
+
+/* полоса прокрутки  */
+.infobox-rows::-webkit-scrollbar { width: 3px; height: 3px; }
+.infobox-rows::-webkit-scrollbar-button { background-color: transparent; height: 11px; }
+.infobox-rows::-webkit-scrollbar-track { background-color: transparent; }
+.infobox-rows::-webkit-scrollbar-track-piece { background-color: #EBEBEB; }
+.infobox-rows::-webkit-scrollbar-thumb { height: 50px; background-color: #eb5017; border-radius: 3px; }

@@ -1,7 +1,30 @@
-// элемент формы - слайдер/ползунок
+﻿// элемент формы - слайдер/ползунок
 
-class Slider {
-    constructor({elementsId, input, min, max, sliderValue, methods}) {
+class Methods {
+    // класс с набором методов
+
+    getValueBetween(value, min, max) {
+    // функция возвращает переданное значение value в диапазоне min и max
+    switch (true) {
+        case (value >= this.min && value <= this.max):
+            return value;
+        case (value < this.min):
+            return this.min;
+        case (value > this.max):
+            return this.max;
+    }
+}
+
+    getNumberWithSpaces(value) {
+        // добавить разделитель групп разрядов
+        // 2250000 > 2 250 000
+        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+}
+
+class Slider extends Methods{
+    constructor({elementsId, input, min, max, sliderValue}) {
+        super();
 
         // определяем ключевые элементы слайдера
         this.slider = document.getElementById(elementsId + '-slider');
@@ -9,8 +32,6 @@ class Slider {
         this.track = this.slider.querySelector('.slider-track');
         this.labels = this.slider.querySelector('.slider-labels');
         this.thumb = this.slider.getElementsByClassName('slider-thumb')[0];
-        this.getValueBetween = methods['getValueBetween'];
-        this.getNumberWithSpaces = methods['getNumberWithSpaces'];
 
         // определяем свойства класса
         this.min = min;
@@ -289,38 +310,17 @@ class Slider {
     }
 }
 
-class Methods {
-    // класс с набором методов
 
-    getValueBetween(value, min, max) {
-    // функция возвращает переданное значение value в диапазоне min и max
-    switch (true) {
-        case (value >= this.min && value <= this.max):
-            return value;
-        case (value < this.min):
-            return this.min;
-        case (value > this.max):
-            return this.max;
-    }
-}
-
-    getNumberWithSpaces(value) {
-        // добавить разделитель групп разрядов
-        // 2250000 > 2 250 000
-        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    }
-}
-
-class NumberInputControl {
+class NumberInputControl extends Methods{
 // контролль ввода чисел в input type text
 
-    constructor({ elementsId, min, max, value, methods, type }) {
+    constructor({ elementsId, min, max, value, type }) {
+        super();
+
         this.input = document.getElementById(elementsId + '-input');
         this.slider = document.getElementById(elementsId + '-slider');
         this.min = min;
         this.max = max;
-        this.getValueBetween = methods['getValueBetween'];
-        this.getNumberWithSpaces = methods['getNumberWithSpaces'];
 
         this.onInput = this.onInput.bind(this);
         this.input.addEventListener('input', this.onInput);
@@ -439,8 +439,5 @@ class DateInputControl {
         date = dd + '.' + mm + '.' + yyyy;
         return date;
     }
-
-        
-
 
 }

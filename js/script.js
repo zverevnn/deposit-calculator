@@ -1,10 +1,8 @@
-
+﻿
 $( "#datepicker" ).datepicker({
     dateFormat: "dd.mm.yy"
 });
 
-
-let methods = new Methods();
 
 // настраиваем работу слайдера (бегунка)
 let sliderValue = {
@@ -17,37 +15,34 @@ new Slider({
     elementsId: 'deposit-amount',
     min: sliderValue.min,
     max: sliderValue.max,
-    sliderValue: sliderValue.default,
-    methods: methods
+    sliderValue: sliderValue.default
 });
 
 new NumberInputControl({
     elementsId: 'deposit-amount',
     min: sliderValue.min,
     max: sliderValue.max,
-    value: sliderValue.default,
-    methods: methods
+    value: sliderValue.default
 });
 
 new Slider({
     elementsId: 'deposit-amount-add',
     min: sliderValue.min,
     max: sliderValue.max,
-    sliderValue: sliderValue.default,
-    methods: methods
+    sliderValue: sliderValue.default
 });
 
 new NumberInputControl({
     elementsId: 'deposit-amount-add',
     min: sliderValue.min,
     max: sliderValue.max,
-    value: sliderValue.default,
-    methods: methods
+    value: sliderValue.default
 });
 
 new DateInputControl({
     id: 'datepicker',
 });
+
 
 function removeSpaces(value) {
     return value.replace(/\s/g, "");
@@ -168,10 +163,3 @@ function processDataAjax(inputData) {
         
     });
 }
-
-
-
-
-
-
-

@@ -137,7 +137,6 @@
 			        break;
 			}
 
-
 			$result = [
 				'date' => $date -> format('d.m.Y'),
 				'amountPercent' => $amountPercent,

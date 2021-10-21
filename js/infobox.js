@@ -70,29 +70,22 @@ class Infobox {
         let lastDepositAmount = this.tableRows[this.tableRows.length - 1];
         lastDepositAmount = lastDepositAmount[Object.keys(lastDepositAmount)[2]];
 
-        // итоговая сумма вклада
-        // расчитывается по формуле: сумма процентов + сумма вклада
-        this.finalDepositAmount = this.percentSum;
-        this.finalDepositAmount += (isDepositAdd) ? lastDepositAmount : this.depositAmount;
+        // итоговая сумма к выплате (вклад + проценты)
+        this.finalDepositAmount = +lastDepositAmount;
+        this.finalDepositAmount += (this.capitalization) ? 0 : this.percentSum;
 
         // эффективная ставка
-        // если проценты начисляются с учетом капитализации, 
-        // то эффективная ставка больше изначальной процентной ставки
-        // рассчитывается по формуле: сумма процентов / сумма вклада
+        // если проценты начисляются с учетом капитализации
+        // (((1+(ставка % /12)) ^ кол-во месяцев -1)*100)/кол-во лет
         let quantityYears = (this.tableRows.length - 1) / 12;
-        this.finalPercent = ((this.percentSum / this.depositAmount) * 100 / quantityYears).toFixed(2);
+        let quantityMonths = quantityYears * 12;
+        this.finalPercent = this.percent / 100 / 12 + 1;
+        this.finalPercent = Math.pow(this.finalPercent, quantityMonths);
+        this.finalPercent = (this.finalPercent - 1) * 100 / quantityYears;
 
-        // сумма к выплате
-        // если проценты начисляются с учетом капитализации,
-        // итоговая сумма к выплате рассчитывается по формуле: сумма процентов + сумма вклада
-        // берется сумма вклада   
-        if (this.isDepositAdd) {
-            this.payoutAmount = lastDepositAmount;
-        } else {
-            this.payoutAmount = (capitalization) ? this.finalDepositAmount : this.depositAmount;
-        }
+        // сумма к выплате 
+        this.payoutAmount = lastDepositAmount;
         
-
         if (infoboxShow) this.infoboxToggle();  
     }
 	
@@ -157,8 +150,7 @@ class Infobox {
         if (!this.infobox) {
 			// сгенерировать информационный блок
 			// this.infobox
-            this.generateInfobox();
-			
+            this.generateInfobox();	
         }
 		
 		// если эелемнт не виден, то делаем его видимым
