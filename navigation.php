@@ -3,7 +3,7 @@
 
 		private $breadcrumbArr;
 		private $menuArr;
-		function __construct($page, $defaultPage = 'calculator', $pageStructureFileName = 'pages.json') {
+		function __construct($page, $defaultPage = 'calculator', $pageStructureFileName = 'settings/pages.json') {
 			$this -> pageStructure = json_decode(file_get_contents( __DIR__ . DIRECTORY_SEPARATOR . $pageStructureFileName ), true);
 			$this -> page = $page ? $page : $defaultPage;
 			$this -> currentPage = $this -> page;

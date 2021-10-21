@@ -294,7 +294,7 @@
 	echo $calculator -> getResult();
 	
 
-	function getCalcProperties($url = 'calc_properties.txt', $separator = ' = ') {
+	function getCalcProperties($url = 'settings/calc_properties.txt', $separator = ' = ') {
 		// вернуть массив свойство => значение из файла
 
 		$values = file($url);
