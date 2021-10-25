@@ -97,7 +97,8 @@ class Infobox {
 	infoboxMouseDown(event) {
 		// работа с событиями, чтобы реализовать функционал перемещения объекта мышкой 
 		this.infoboxShiftX = event.clientX - this.infobox.getBoundingClientRect().left;
-		this.infoboxShiftY = event.clientY - this.infobox.getBoundingClientRect().top;
+        this.infoboxShiftY = event.clientY - this.infobox.getBoundingClientRect().top;
+
 		event.preventDefault();
 		document.addEventListener('mousemove', this.infoboxMove);
 		document.addEventListener('mouseup', this.infoboxMouseUp);
@@ -105,6 +106,7 @@ class Infobox {
 	
 	infoboxMove(event) {
 		// работа с событиями, чтобы реализовать функционал перемещения объекта мышкой
+
 		this.infobox.style.left = this.getNewcoordinatesX(event.clientX - this.infoboxShiftX);
 		this.infobox.style.top = this.getNewcoordinatesY(event.clientY - this.infoboxShiftY);
 	}

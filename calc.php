@@ -45,6 +45,12 @@
 
 			$this -> calculationResult = [];
 
+			/*
+			$this -> depositPeriodYears = 1;
+			$this -> percent = 0.1;
+			$this -> calculate(new DateTime('2023-12-25'));
+			*/
+
 			$this -> calculate(new DateTime($this -> depositDate));
 
 			$result = [
@@ -58,7 +64,7 @@
 		}
 
 
-		private function calculate($date, $amountPreviousMonth = 0, $index = 1) {
+		private function calculate($date, $previousDate = false, $amountPreviousMonth = 0, $index = 1) {
 			
 			// $date - дата расчета процентов по вкладу
 			// $amountPreviousMonth - сумма на счете на конец прошлого месяца
@@ -85,26 +91,31 @@
 			// процентная ставка 
 			$percent = $this -> percent;
 
-			// получаем предыдущую дату
-			$previousDate = clone $date;
-			$previousDate -> modify('first day of previous month');
+			$amountPercent = 0;
 
-			// год, на который приходился вклад
-			$year = $previousDate -> format("Y");
+			if ($previousDate) {
 
-			// месяц, на который приходился вклад
-			$month = $previousDate -> format("m");
+				// год, на который приходился вклад
+				$yearPrev = $previousDate -> format("Y");
 
-			// количество дней в месяце, на который приходился вклад
-			$daysN = date('t', mktime(0, 0, 0, $month, 1, $year)); 
-			//$daysN = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+				// месяц, на который приходился вклад
+				$month = $previousDate -> format("m");
 
-			// количество дней в году, на который приходится расчетная дата
-			// в високосном году 366 дней, в обычном 365
-			$daysY = ( $year % 4 == 0 && ( $year % 100 != 0 || $year % 400 == 0 ) ) ? 366 : 365;
-			
-			// формула расчета капитализации процентов по вкладу
-			$amountPercent = ($amountPreviousMonth + $amountPreviousMonth * $daysN * ($percent / $daysY)) - $amountPreviousMonth;
+				// количество дней в месяце, на который приходился вклад
+				$daysN = date('t', mktime(0, 0, 0, $month, 1, $yearPrev)); 
+
+				// количество дней в году, на который приходится расчетная дата
+				$daysYPrev = $this -> getDaysYear($yearPrev);
+				$daysY = $this -> getDaysYear($date -> format("Y"));
+
+				// если текущий месяц = январь, то 
+				// есть вероятность, что на текущую дату и дату прошлого месяца разное количество дней в году
+				// на этот случай, при вычислении $amountPercent к количеству дней в году прибавляем дополнительное значение $daysYPrevAddedValue
+				$daysYPrevAddedValue = ($month == 12) ? ($daysY - $daysYPrev) * ($previousDate -> format('d') / $daysN) : 0;
+
+				// формула расчета капитализации процентов по вкладу
+				$amountPercent = $amountPreviousMonth * $daysN * ($percent / ($daysYPrev + $daysYPrevAddedValue));
+			} 
 
 			switch (true) {
 
@@ -147,11 +158,16 @@
 						
 			if ($index < $monthsN) {
 				// получаем следующую расчетную дату
-
-				$nextDate = $this -> getDateAddMonths($date, $depositDate -> format("d"));
-				$this -> calculate($nextDate, $amountTotal, ++$index);
+				$nextDate = $this -> getDateAddMonths(clone $date, $depositDate -> format("d"));
+				$this -> calculate($nextDate, $date, $amountTotal, ++$index);
 			}
 
+		}
+
+		private function getDaysYear($year) {
+			// определить количество дней в году
+			// в високосном году 366 дней, в обычном 365
+			return ($year % 4 == 0 && ( $year % 100 != 0 || $year % 400 == 0 )) ? 366 : 365;
 		}
 
 		private function getDateAddMonths($date, $d, $addMonthN = 1){
