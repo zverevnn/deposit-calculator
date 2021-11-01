@@ -171,7 +171,7 @@
 		}
 
 		private function getDateAddMonths($date, $d, $addMonthN = 1){
-			// метод увеличиваем дату на заданное количество месяцев
+			// метод увеличивает дату на заданное количество месяцев
 
 			// $date - класс даты, к котороу нужно прибавить n месяцев
 			// $d - число, которое нужно получить
@@ -259,11 +259,9 @@
 		private function addProperties($properties) {
 
 			// создание свойств класса из массива
-			while ($property = current($properties)) {
-				$key = key($properties);
-			    $this -> $key = $property;
-			    next($properties);
-			}
+			foreach ($properties as $key => $property) {
+		        $this -> $key = $property;
+		    }
 		}
 
 		private function isDate($value) {
